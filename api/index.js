@@ -17,12 +17,36 @@
 //     =====`-.____`.___ \_____/___.-`___.-'=====
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
-
+const {Type} = require('../api/src/db')
+const axios = require('axios')
 // Syncing all the models at once.
+const addTypeToDb = async () => {
+  try{
+    // console.log('entra')
+    const typeFromApi = await axios.get('https://pokeapi.co/api/v2/type')
+    // console.log(typeFromApi)
+    const typesNames = typeFromApi.data.results
+    // console.log(typesNames)
+    typesNames.map(e => {
+      Type.create({name: e.name})
+    })
+  }catch(err){
+    console.error(err)
+    
+
+  }
+}
+
+
+
+
 conn.sync({ force: true }).then(() => {
+
   server.listen(3001, () => {
+    addTypeToDb()
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
 });

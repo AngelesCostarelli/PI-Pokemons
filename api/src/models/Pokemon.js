@@ -14,25 +14,23 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    hp: {
+    pkHp: {
       type: DataTypes.INTEGER
     },
-    attack: {
+    pkAttack: {
       type: DataTypes.INTEGER
     },
-    defense: {
+    pkDefense: {
       type: DataTypes.INTEGER
     },
-    speed: {
-      type: DataTypes.INTEGER
-    },
+   
     height: {
       type: DataTypes.INTEGER
     },
     weight: {
       type: DataTypes.INTEGER
     },
-    sprite:{
+    pkImg:{
       type: DataTypes.STRING
     },
   });

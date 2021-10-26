@@ -4,9 +4,10 @@ const axios = require('axios')
 const router = Router();
 const {POKEMON_URL} = require('../Util/url');
 const getPokemonsApi = require('../controllers/getPokemonsApi');
-const getPokemonDb = require('../controllers/getPokemonDb')
+const getPokemonDb = require('../controllers/getPokemonDb');
+const getAllPk = require('../controllers/getAllPk');
 
-
+//GET POKEMONS FROM DATABASE
 router.get('/db', async (req, res, next) =>{
     const result = await getPokemonDb()
     try{
@@ -15,6 +16,8 @@ router.get('/db', async (req, res, next) =>{
       next(err)
     }
 })
+
+//GET POKEMONS FROM API
 router.get('/api', async(req, res, next)=>{
     const result = await getPokemonsApi()
     try{
@@ -24,68 +27,75 @@ router.get('/api', async(req, res, next)=>{
     }
 })
 
-router.get('/', async (req, res, next)=>{
-    const api = await getPokemonsApi()
-    const db = await getPokemonDb()
-    const all = api.concat(db)
-    // console.log(all)
+// router.get('/', async (req, res, next)=>{
+//     const getAllPokemon = await getAllPk()
+//     console.log(getAllPokemon)
     
+//     try{
+//         return res.status(200).json(getAllPokemon)
+//       }catch(err){
+//         next(err)
+//       }
+//   })
+
+//GET POKEMON BY NAME FROM THE URL BY QUERYS (?) AND IF IT DOESN´T PUT ANY, WE GET ALLPOKEMONS FROM DB AND ALSO FROM API
+router.get('/', async (req, res, next)=>{
+    const {name} = req.query
+   
+    const getAllPokemon = await getAllPk()
     try{
-        return res.status(200).json(all)
-      }catch(err){
-        next(err)
-      }
-  })
+        if(name){
+            const result = getAllPokemon.find(e => e.name == name)
+           
+            return res.json(result)
+            
+        }else{
+            return res.json(getAllPokemon)
+        }
 
+    }catch(err){
+        return next(err)
+    }
+})
 
- 
+//GET POKEMON BY ID PASSED BY PARAMS (:)
 router.get('/:id', async (req, res, next)=>{
     const {id} = req.params
-    const api = await getPokemonsApi()
-    const db = await getPokemonDb()
-    const all = api.concat(db)
-    const result = all.find(e => e.id.toString() === id)
-    console.log(result)
+    const getAllPokemon = await getAllPk()
+    const result = getAllPokemon.find(e => e.id == id)
+   
     try{
         return res.json(result)
 
     }catch(err){
         next(err)
-    }
-
-
-
-   
+    }   
 })
 
-
-
-
+//POST CREATED POKEMONS BY BODY
 router.post('/', async (req, res, next) =>{
     try{
-        const {name, image} = req.body;
+        const {id, name, height, weight,pkHp,pkAttack, pkDefense, pkImg, type1, type2} = req.body;
         const newPokemon = await Pokemon.create({
-            name,
-            image
+            id: id,
+            name: name, 
+            height: height || 0, 
+            weight: weight || 0,
+            pkHp: pkHp || '',
+            pkAttack: pkAttack || '', 
+            pkDefense: pkDefense || '', 
+            pkImg: pkImg || 'https://pbs.twimg.com/profile_images/1178942318981701634/d5qM22Ft.jpg', 
+            type1: type1 || 'No tiene', 
+            type2: type2 || 'No tiene'
         })
         res.send(newPokemon)
 
-    }catch(error){
-        next(error)
+    }catch(err){
+        next(err)
     }
 })
 
-router.post('/:pokemonId/type/:typeId', async (req, res, next)=>{
-    try{
-        const {pokemonId, typeId} = req.params;
-        const pokemon = await Pokemon.findByPk(pokemonId)
-        await pokemon.addType(typeId)
-        res.send(200)
 
-    }catch(error){
-        next(error)
-    }
-})
 
 
 

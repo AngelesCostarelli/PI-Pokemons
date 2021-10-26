@@ -8,8 +8,8 @@ router.get('/', async (req, res, next) =>{
         const type = await Type.findAll()
         res.send(type)
 
-    }catch(error){
-        next(error)
+    }catch(err){
+        next(err)
     }
 })
 
@@ -17,19 +17,13 @@ router.post('/', (req, res, next)=>{
     const {name} = req.body;
     return Type.create({name})
     .then((newType) =>{
-        newType
+        
         res.status(201).send(newType)
     })
-    .catch(error => next(error))
+    .catch(err => next(err))
 
 })
 
-router.put('/', (req, res, next) =>{
-    res.send('soy un put /type')
-})
 
-router.delete('/', (req, res, next) =>{
-    res.send('soy un delete /type')
-})
 
 module.exports = router;

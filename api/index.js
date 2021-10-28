@@ -23,6 +23,8 @@ const { conn } = require('./src/db.js');
 const {Type} = require('../api/src/db')
 const axios = require('axios')
 // Syncing all the models at once.
+
+//AGREGO TODOS LOS TIPOS DE LA API A LA DATABASE
 const addTypeToDb = async () => {
   try{
     // console.log('entra')
@@ -39,8 +41,6 @@ const addTypeToDb = async () => {
 
   }
 }
-
-
 
 
 conn.sync({ force: true }).then(() => {

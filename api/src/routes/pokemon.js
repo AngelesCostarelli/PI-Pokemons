@@ -2,7 +2,6 @@ const { Router } = require('express');
 const {Pokemon, Type} = require('../db')
 const axios = require('axios')
 const router = Router();
-const {POKEMON_URL} = require('../Util/url');
 const getPokemonsApi = require('../controllers/getPokemonsApi');
 const getPokemonDb = require('../controllers/getPokemonDb');
 const getAllPk = require('../controllers/getAllPk');

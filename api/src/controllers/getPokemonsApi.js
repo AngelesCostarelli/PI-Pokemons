@@ -1,7 +1,5 @@
 const axios = require('axios')
-const {
-    POKEMON_URL
-} = require('../Util/url')
+
 
 
 

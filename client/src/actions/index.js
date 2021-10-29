@@ -2,7 +2,7 @@ import axios from 'axios'
 import {RUTE_DATA, RUTE_POKEMONS, RUTE_POKEMONSAPI, RUTE_POKEMONSDB, RUTE_NAME, RUTE_TYPE} from '../Urls/urls'
 
 export const GET_POKEMONS = 'GET_POKEMONS';
-
+export const FILTER_BY_TYPES = 'FILTER_BY_TYPES';
 
 // version async await
 export function getPokemons(){
@@ -23,3 +23,10 @@ export function getPokemons(){
 //         })
 //     }
 // }
+export function filterPokemonByTypes(payload){
+    console.log(payload)
+    return{
+        type: FILTER_BY_TYPES,
+        payload
+    }
+}

@@ -5,7 +5,7 @@ const axios = require('axios')
 
 
 const getPokemonsApi = async () => {
-    const pokemon = await axios.get( "https://pokeapi.co/api/v2/pokemon?limit=5") //Traigo los primeros 20 pokemons de la Api
+    const pokemon = await axios.get( "https://pokeapi.co/api/v2/pokemon?limit=40") //Traigo los primeros 20 pokemons de la Api
     // console.log(pokemon.data.results)
     let allPokemons = []
     for (const p of pokemon.data.results) {

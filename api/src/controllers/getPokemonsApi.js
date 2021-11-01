@@ -15,18 +15,22 @@ const getPokemonsApi = async () => {
         const pkHp = hp.base_stat;
         const pkAttack = attack.base_stat;
         const pkDefense = defense.base_stat;
-        const pkImg =  sprites.front_default;
-        const [typeOne, typeTwo] = types
-    
+        const pkImg =  sprites.other.home.front_default;
+        const type = types.map(e => e.type.name)
+       
         
         allPokemons=[
             ...allPokemons,
-            {id, name, height, weight,pkHp,pkAttack, pkDefense, pkImg, type1: typeOne.type.name, type2: typeTwo ? typeTwo.type.name : 'No tiene'}
+            {id, name, height, weight,pkHp,pkAttack, pkDefense, pkImg, type: type.length < 2 ? [type[0]] : [type[0], type[1]]}
          ]        
     }
+    
     return allPokemons
 
 }
+
+
+
 
 
 module.exports = getPokemonsApi

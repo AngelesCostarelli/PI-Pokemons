@@ -1,11 +1,18 @@
 import React from "react";
+import s from "../Card/Card.module.css"
 
-export default function Card({name, image, types}){
+export default function Card({name, image, type}){
+    
     return(
         <div>
             <img src={image} alt="img not found" width="200px" height="250px"/>
-            <h5>{name}</h5>
-            <h3>{types}</h3>
+            <h3 className={s.name}>{name}</h3>
+            <h5>{type}</h5>
+           
+           
+            
+
         </div>
+        
     )
 }

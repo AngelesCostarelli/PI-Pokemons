@@ -16,8 +16,9 @@ export default function PokemonCreate(){
         pkHp: "",
         pkAttack: "", 
         pkDefense: "",
+        pkSpeed: "",
         image: "", 
-        types:[]
+        type:[]
     })
 
     function handleChange(e){
@@ -28,11 +29,11 @@ export default function PokemonCreate(){
         console.log(input)
 
     }
-    console.log(input)
+    
     function handleSelect(e){
         setInput({
             ...input,
-            types: [...input.types, e.target.value]
+            type: [...input.type, e.target.value]
         })
     }
     function handleSubmit(e){
@@ -47,11 +48,12 @@ export default function PokemonCreate(){
             pkHp: "",
             pkAttack: "", 
             pkDefense: "",
+            pkSpeed: "",
             image: "", 
-            types:[]
+            type:[]
 
         })
-        history.push('/home')
+        history.push('/home') // me redirige al home cuando termino de crear el personaje 
     }
 
     useEffect(()=> {
@@ -65,7 +67,7 @@ export default function PokemonCreate(){
             <h1>Crea tu personaje</h1>
             <form onSubmit={(e)=> handleSubmit(e)}>
                 <div>
-                    <label htmlFor="">Nombre:</label>
+                    <label >Nombre:</label>
                     <input 
                     type="text" 
                     value= {input.name} 
@@ -73,47 +75,55 @@ export default function PokemonCreate(){
                     onChange={(e)=>handleChange(e)}/>
                 </div>
                 <div>
-                    <label htmlFor="">Altura:</label>
+                    <label >Altura:</label>
                     <input type="number"
                     value={input.height}
                     name = "height" 
                     onChange={(e)=>handleChange(e)}/>
                 </div>
                 <div>
-                    <label htmlFor="">Peso:</label>
+                    <label >Peso:</label>
                     <input type="number"
                     value={input.weight}
                     name = "weight" 
                     onChange={(e)=>handleChange(e)}
                     />
                 </div>
+            
                 <div>
-                    <label htmlFor="">Imagen:</label>
-                    <input type="text"
-                    value={input.image}
-                    name = "weight" 
-                    onChange={(e)=>handleChange(e)}/>
-                </div>
-                <div>
-                    <label htmlFor="">Vida:</label>
+                    <label >Vida:</label>
                     <input type="number"
                     value={input.pkHp}
                     name = "pkHp" 
                     onChange={(e)=>handleChange(e)}/>
                 </div>
                 <div>
-                    <label htmlFor="">Fuerza:</label>
+                    <label >Fuerza:</label>
                     <input type="number"
                     value={input.pkAttack}
                     name = "pkAttack"
                     onChange={(e)=>handleChange(e)} />
                 </div>
                 <div>
-                    <label htmlFor="">Defensa:</label>
+                    <label >Defensa:</label>
                     <input type="number"
                     value={input.pkDefense}
                     name = "pkDefense"
                     onChange={(e)=>handleChange(e)} />
+                </div>
+                <div>
+                    <label >Velocidad:</label>
+                    <input type="number"
+                    value={input.pkSpeed}
+                    name = "pkSpeed"
+                    onChange={(e)=>handleChange(e)} />
+                </div>
+                <div>
+                    <label >Imagen:</label>
+                    <input type="text"
+                    value={input.image}
+                    name = "image" 
+                    onChange={(e)=>handleChange(e)}/>
                 </div>
                 <select onChange={(e) => handleSelect(e)}>
                     {types.map((t)=> (
@@ -121,7 +131,7 @@ export default function PokemonCreate(){
                         
                     ))}
                 </select>
-               <ul><li>{input.types.map(el => el + " ,")}</li></ul>
+               <ul><li>{input.type.map(el => el + " ,")}</li></ul>
 
                 <button type='submit'>Crea Pokemon</button>
                 

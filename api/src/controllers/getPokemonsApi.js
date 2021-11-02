@@ -11,17 +11,18 @@ const getPokemonsApi = async () => {
     for (const p of pokemon.data.results) {
         const poke = await axios.get(p.url)
         const {id, name, height, weight, stats, sprites, types} = poke.data
-        const [hp, attack, defense] = stats
+        const [hp, attack, defense, special_attack, special_defense, speed] = stats
         const pkHp = hp.base_stat;
         const pkAttack = attack.base_stat;
         const pkDefense = defense.base_stat;
+        const pkSpeed = speed.base_stat;
         const pkImg =  sprites.other.home.front_default;
         const type = types.map(e => e.type.name)
        
         
         allPokemons=[
             ...allPokemons,
-            {id, name, height, weight,pkHp,pkAttack, pkDefense, pkImg, type: type.length < 2 ? [type[0]] : [type[0], type[1]]}
+            {id, name, height, weight,pkHp,pkAttack, pkDefense, pkSpeed, pkImg, type: type.length < 2 ? [type[0]] : [type[0], type[1]]}
          ]        
     }
     

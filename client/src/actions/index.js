@@ -59,13 +59,8 @@ export function getTypes(){
 
 export function postPokemons(payload){
     return async function(dispatch){
-        const response = await axios.post(GET_POKEMONS, payload)
-       
-        return dispatch({
-            type: 'POST_POKEMONS',
-            payload: response.payload
-
-        })
+        const response = await axios.post(RUTE_POKEMONS, payload)
+        return response
     }
 }
 

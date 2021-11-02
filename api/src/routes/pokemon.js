@@ -5,6 +5,8 @@ const router = Router();
 const getPokemonsApi = require('../controllers/getPokemonsApi');
 const getPokemonDb = require('../controllers/getPokemonDb');
 const getAllPk = require('../controllers/getAllPk');
+const createPokemon = require('../controllers/createPokemon');
+
 
 //GET POKEMONS FROM DATABASE
 router.get('/db', async (req, res, next) =>{
@@ -73,22 +75,10 @@ router.get('/:id', async (req, res, next)=>{
 
 //POST CREATED POKEMONS BY BODY
 router.post('/', async (req, res, next) =>{
+    const {name, height, weight, pkHp, pkAttack, pkDefense, pkSpeed, pkImg, type} = req.body;
     try{
-        const {id, name, height, weight,pkHp,pkAttack, pkDefense, pkImg, type1, type2} = req.body;
-        const newPokemon = await Pokemon.create({
-            id: id,
-            name: name, 
-            height: height || 0, 
-            weight: weight || 0,
-            pkHp: pkHp || '',
-            pkAttack: pkAttack || '', 
-            pkDefense: pkDefense || '', 
-            pkImg: pkImg || 'https://pbs.twimg.com/profile_images/1178942318981701634/d5qM22Ft.jpg', 
-            type1: type1 || 'No tiene', 
-            type2: type2 || 'No tiene'
-        })
-        res.send(newPokemon)
-
+        const respose = await createPokemon(name, height, weight, pkHp, pkAttack, pkDefense, pkSpeed, pkImg, type)
+        res.send(respose)
     }catch(err){
         next(err)
     }

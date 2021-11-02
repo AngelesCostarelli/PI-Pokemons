@@ -30,9 +30,14 @@ module.exports = (sequelize) => {
     weight: {
       type: DataTypes.INTEGER
     },
+    pkSpeed: {
+      type: DataTypes.INTEGER
+    },
+
     pkImg:{
       type: DataTypes.STRING
     },
+   
     
     
     createdInDb: {

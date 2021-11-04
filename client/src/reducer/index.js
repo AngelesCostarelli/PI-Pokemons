@@ -1,11 +1,12 @@
-import { GET_POKEMONS, FILTER_BY_TYPES, FILTER_CREATED, ORDER_BY_NAME, ORDER_BY_ATTACK, GET_NAME_POKEMONS, GET_TYPES } from "../actions";
+import { GET_POKEMONS, FILTER_BY_TYPES, FILTER_CREATED, ORDER_BY_NAME, ORDER_BY_ATTACK, GET_NAME_POKEMONS, GET_TYPES, GET_DETAILS } from "../actions";
 
 
 const inicialState = {
     pokemons: [],
     allPokemons: [],
     types: [],
-    pokemonName: []
+    pokemonName: [],
+    detail: [],
 
 }
 
@@ -30,6 +31,13 @@ function reducer(state = inicialState, action){
                 types: action.payload
 
             }
+        case GET_DETAILS:
+            return{
+                ...state,
+                detail: action.payload
+
+            }
+
         case FILTER_BY_TYPES:
             const allPokemons = state.allPokemons
             const typesFiltered = action.payload === 'All' ? allPokemons : allPokemons.filter(el => el.type[0] === action.payload || el.type[1] === action.payload) 

@@ -5,7 +5,9 @@ function LandingPage(){
     return (
         <div className={s.bkg}>
         <div className={s.div}>
-            <h1 className={s.welcome}>Welcome</h1>
+            <div className={s.welcome}>
+            <h3>Welcome to the Pokemon Api</h3>
+            </div>
             <Link to = '/home'>
                 <button className={s.btn}>Ingresar</button>
             </Link>

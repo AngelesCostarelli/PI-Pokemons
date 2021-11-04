@@ -8,6 +8,7 @@ export const ORDER_BY_NAME = 'ORDER_BY_NAME';
 export const ORDER_BY_ATTACK = 'ORDER_BY_ATTACK'
 export const GET_NAME_POKEMONS = 'GET_NAME_POKEMONS'
 export const GET_TYPES = 'GET_TYPES'
+export const GET_DETAILS = 'GET_DETAILS'
 
 // version async await
 export function getPokemons(){
@@ -97,4 +98,21 @@ export function pokemonName(payload){
         type: 'POKEMON_NAME',
         payload
     }
+}
+
+export function getDetail(id){
+    return async function(dispatch){
+        try{
+            let json = await axios(RUTE_DATA + id)
+            return dispatch({
+                type: GET_DETAILS,
+                payload: json.data
+            })
+        }catch(err){
+            console.log(err)
+        }
+
+        
+    }
+
 }

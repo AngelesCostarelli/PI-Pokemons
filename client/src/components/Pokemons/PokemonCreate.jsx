@@ -4,11 +4,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getTypes, postPokemons } from '../../actions';
 
 
+
+
+
 export default function PokemonCreate(){
     const dispatch = useDispatch()
     const history = useHistory()
     const types = useSelector((state)=> state.types)
     
+
     const [input, setInput] = useState({
         name:"", 
         height: "",
@@ -26,6 +30,7 @@ export default function PokemonCreate(){
             ...input,
             [e.target.name] : e.target.value
         })
+        
         console.log(input)
 
     }
@@ -73,6 +78,7 @@ export default function PokemonCreate(){
                     value= {input.name} 
                     name="name"
                     onChange={(e)=>handleChange(e)}/>
+                    
                 </div>
                 <div>
                     <label >Altura:</label>
@@ -80,6 +86,7 @@ export default function PokemonCreate(){
                     value={input.height}
                     name = "height" 
                     onChange={(e)=>handleChange(e)}/>
+                    
                 </div>
                 <div>
                     <label >Peso:</label>
@@ -131,7 +138,7 @@ export default function PokemonCreate(){
                         
                     ))}
                 </select>
-               <ul><li>{input.type.map(el => el + " ,")}</li></ul>
+               <ul><li>{input.type.map(el => el + " ")}</li></ul>
 
                 <button type='submit'>Crea Pokemon</button>
                 

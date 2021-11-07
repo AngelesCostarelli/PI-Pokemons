@@ -11,8 +11,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: auto;
-   
+    margin-left: 45px;
+   margin-bottom: 25px;
    
 }
 .container .card{
@@ -27,6 +27,7 @@
     transition: all 0.25;
     background-color: rgb(201, 243, 229);
     border-spacing: 20px;
+    color:rgb(91, 163, 139) ;
     
 }
 
@@ -42,18 +43,21 @@
     
 
 }
-h3{
-    text-transform: capitalize;
-}
-h5{
-    text-transform: lowercase;
-}
+
+    
+
 
 .container .card h5{
     padding: 0 1rem;
     font-size: 16px;
     font-weight: 300;
     
+
+}
+.name{
+    color:darkslategray;
+    text-transform: capitalize;
+    text-decoration: none;
 
 }
 

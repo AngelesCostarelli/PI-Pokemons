@@ -4,7 +4,7 @@ import s from "../Card/Card.module.css"
 
 export default function Card({id, name, image, type}){
 
-    
+   
     return(
         <div className={s.div}>
         <div className={s.container}>
@@ -13,14 +13,16 @@ export default function Card({id, name, image, type}){
             <img src={image} alt="img not found" width="200px" height="250px"/>
             <h2 className={s.name}>{name}</h2>
             </Link>
-            <h5>
+            <div className={s.type}>
+            <h5 >
                Type: 
             </h5>
-            <div>
+            <div className={s.types}>
                 {type.map((e)=> 
                 <div>{e}</div>
                 
                 )}
+            </div>
             </div>
            
         

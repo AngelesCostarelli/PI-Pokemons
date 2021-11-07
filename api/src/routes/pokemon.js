@@ -46,7 +46,9 @@ router.get('/', async (req, res, next)=>{
     const getAllPokemon = await getAllPk()
     try{
         if(name){
-            const result = getAllPokemon.find(e => e.name == name)
+            const result = getAllPokemon.find(e => e.name.toLowerCase() === name.toLowerCase())
+            // find(e => e.name === name)
+            // filter(e => e.name.toLowerCase().includes(name.toLowerCase()))
            
             return res.json(result)
             

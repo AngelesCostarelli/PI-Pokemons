@@ -10,7 +10,7 @@
     margin-left: 350px;
     border-radius: 7px;
     box-shadow: 0px 14px 32px 0px rgba(0,0,0,0.5);
-    overflow: hidden;
+    /* overflow: hidden; */
     box-sizing: border-box;
 
 
@@ -42,8 +42,8 @@
     font-family: serif;
 
 }
-.pokemonTexto h2{
-    margin: 0 0 17px 8px;
+.pokemonTexto h5{
+    margin: 0 0 10px 8px;
     font-size: 13px;
     font-family: sans-serif;
     text-transform: uppercase;
@@ -52,7 +52,7 @@
 }
 
 .btn{
-    height: 50px;
+    height: 40px;
     margin-top: 17px;
     display: flex;
     justify-content: center;
@@ -60,16 +60,17 @@
 }
 .btn button{
     height: 50px;
-    width: 120px;
-    border-radius: 70px;
+    width: 60px;
+    border-radius: 60px;
     font-family: sans-serif;
     text-transform: uppercase;
-    letter-spacing: .2em;
-    color:rgb(23, 65, 54);
+    letter-spacing: .1em;
+    color:rgb(91, 169, 189);
     text-align: center;
-    line-height: 25px;
-    background: rgb(98, 185, 174);
-    /* cursor: pointer; */
+    line-height: 15px;
+    background: rgb(181, 228, 221);
+    cursor: pointer;
+
     text-decoration: none;
 }
 

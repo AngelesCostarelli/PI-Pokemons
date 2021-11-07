@@ -39,18 +39,21 @@ export default function PokemonDetail(){
                 <div className={s.pokemonInfo}>
                     <div className={s.pokemonTexto}>
                      <h1>{myPokemon.name}</h1>
-                     <h2>Height: {myPokemon.height}</h2>
-                     <h2>Weight: {myPokemon.weight}</h2>
-                     <h2>Life: {myPokemon.pkHp}</h2>
-                     <h2>Attack: {myPokemon.pkAttack}</h2>
-                     <h2>Defense: {myPokemon.pkDefense}</h2>
-                     <h2>Speed: {myPokemon.pkSpeed}</h2>
-                     <h2>Type: {myPokemon.type}</h2>
+                     <h5>Id: {myPokemon.id}</h5>
+                     <h5>Height: {myPokemon.height}</h5>
+                     <h5>Weight: {myPokemon.weight}</h5>
+                     <h5>Life: {myPokemon.pkHp}</h5>
+                     <h5>Attack: {myPokemon.pkAttack}</h5>
+                     <h5>Defense: {myPokemon.pkDefense}</h5>
+                     <h5>Speed: {myPokemon.pkSpeed}</h5>
+                     <h5>Type:{myPokemon.type[0] + ' ' + myPokemon.type[1]} </h5>
+                     
+                     
                      </div>
                      
                     <div className={s.btn}>
                      <Link to='/home'>
-                     <button>Go Back</button>
+                     <button>Back</button>
                      </Link>
                      </div>
                      </div>

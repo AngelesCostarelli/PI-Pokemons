@@ -1,0 +1,32 @@
+input{
+    position: relative;
+    display:inline-block ;
+    font-size: 15px;
+    box-sizing: border-box;
+    transition: .5s;
+}
+input[type="text"]{
+    background: #fff;
+    width: 240px;
+    height: 35px;
+    border:none;
+    outline: none;
+    padding: 0 25px;
+    border-radius: 25px 0 0 25px;
+}
+
+input[type="submit"]{
+    position: relative;
+    left: -5px;
+    border-radius: 0 25px 25px 0;
+    width: 100px;
+    height: 35px;
+    border: none;
+    overflow: none;
+    cursor: pointer;
+    background: rgb(189, 208, 209);
+    color: #fff;
+}
+input[type="submit"]:hover{
+    background: rgb(225, 225, 241);
+}

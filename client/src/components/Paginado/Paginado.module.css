@@ -17,10 +17,11 @@
 .paginacion ul li a {
 	display:block;
 	padding:10px 10px;
-	color:#fff;
-	background-image: linear-gradient(to bottom, rgb(32, 92, 82), #15c599) ;
+	color:rgb(121, 126, 125);
+	background: #b5f5d0 ;
 	text-decoration: none;
     border-radius: 0px;
+	margin-right: 35px;
 }
 
 .paginacion ul li a:hover {

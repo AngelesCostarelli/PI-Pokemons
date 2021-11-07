@@ -1,18 +1,20 @@
 .container{
     margin-right: 1px;
-    background-image: url("https://lh3.googleusercontent.com/5-w5yrCLD69zlOIfgMndRr4dMhrKW5u8nJVojvrUqnSI8ln1ywgqzNFjWQJYrN2YlVSBMHNyXzhcIrQXRPUYTcqJXjAzYbJyXiXb_uK3YO2G-g=e365-w1927");
     background-repeat: no-repeat;
+    background-color:rgb(240, 243, 240);
 }
 .btn {
     -webkit-border-radius: 28;
     -moz-border-radius: 28;
-    border-radius: 28px;
+    border-radius: 5px;
     font-family: Arial;
     color: #ffffff;
     font-size: 15px;
-    background: #0cd18f;
+    background: #abb9b8;
     padding: 5px 10px 5px 10px;
     text-decoration: none;
+    margin-top: 15px;
+    border: none;
   }
   
   .btn:hover {
@@ -20,7 +22,80 @@
     text-decoration: none;
   }
 
+  select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-apperance: none;
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    border: 0 !important;
+    background:#abb9b8;
+    background-image: none;
+    flex:1;
+    padding: 0 .5em;
+    color: rgb(226, 243, 242);
+    cursor: pointer;
+    font-size: 1em;
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+  select::-ms-expand{
+    display: none;
+  }
+
+  .select{
+    position: relative;
+    display: flex;
+    width: 20em;
+    height: 3em;
+    line-height: 3;
+    background: #eb829c;
+    overflow: hidden;
+    border-radius: .25em;
+    float: left;
+    margin-left: 12px;
+    margin-bottom: 15px;
+    margin-top: 5px;
+
+  }
+
+ 
+  .select::after{
+    content: '\25BC';
+    position: absolute;
+    top:0;
+    right: 0;
+    padding: 0 1em;
+    background: rgb(194, 243, 236);
+    cursor: pointer;
+    pointer-events: none;
+    transition: .25s all ease;
+  }
+  .select:hover::after{
+    color: rgb(245, 88, 166);
+
+  }
+
+  .create {
+    -webkit-border-radius: 7;
+    -moz-border-radius: 7;
+    border-radius: 7px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 14px;
+    background: #f0cee5;
+    padding: 9px 20px 10px 20px;
+    text-decoration: none;
+    border: none;
+    margin-bottom: 15px;
+  }
   
+  .create:hover {
+    background: #f5a1d2;
+    text-decoration: none;
+  }
+
+ 
 
 
  

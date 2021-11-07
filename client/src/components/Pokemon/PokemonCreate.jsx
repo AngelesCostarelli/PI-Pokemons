@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTypes, postPokemons } from '../../actions';
+import s from '../Pokemon/PokemonCreate.module.css'
 
 export function validate(input){
     let errors = {};
@@ -113,13 +114,16 @@ export default function PokemonCreate(){
     
 
     return(
-        <div>
+        <div className={s.general}>
+
             <Link to= "/home"><button>Volver</button></Link>
-            <h1>Let's make your own pokemon</h1>
+           
+            <div className={s.regform}><h1>Let's make your own pokemon</h1></div>
+            <div className={s.mane}>
             <form onSubmit={(e)=> handleSubmit(e)}>
-                <div>
-                    <label >Name:</label>
-                    <input 
+                <div id={s.name}>
+                    <label className={s.namelabel}>Name:</label>
+                    <input className={s.nameinput}
                     type="text" 
                     value= {input.name} 
                     required
@@ -254,6 +258,7 @@ export default function PokemonCreate(){
                 )}
                <button onClick={(e)=>handleDelete(e)}>Reset Types</button>
 
+        </div>
         </div>
     )
 }

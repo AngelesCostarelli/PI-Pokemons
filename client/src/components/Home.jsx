@@ -10,6 +10,7 @@ import Paginado from "./Paginado/Paginado";
 import Search from "./Search/Search";
 import s from "../components/Home/Home.module.css"
 
+
 export default function Home(){
 // --------------traigo types del estado para option--------
     const typesPk = useSelector((state) => state.types)
@@ -72,25 +73,34 @@ export default function Home(){
 
     return (
         <div className={s.container}>
-            <Link to= '/pokemon'>CREATE POKEMON</Link>
-            <h1>POKEMONS APP</h1>
+            <div>
+            <img src="https://d1x7zurbps6occ.cloudfront.net/logo/small/logo-brand-pokemon.png" alt="" />
+            </div>
+            <Link to= '/pokemon'><button className={s.create}>CREATE POKEMON</button></Link>
+            {<Search/>}
 
             <Link to= "/home"><button className={s.btn} onClick={e => {handleClick(e)}}>
-                LOAD ALL POKEMONS
+                 All Pokemons
             </button></Link>
+           
             <div>
-                
-                <select onChange={e => handleSort(e)}>
+                 <div className={s.select}>
+                 <select onChange={e => handleSort(e)}>
+                     <option selected disabled>Order</option>
                     <option value="asc">A-Z</option>
                     <option value="desc">Z-A</option>
                     
                 </select>
+                </div>
                 
+                <div className={s.select}>
                 <select onChange={e => handleSortAttack(e)}>
                     <option value="a">Mas fuerza</option>
                     <option value="d">Menos fuerza</option>
                     
                 </select>
+                </div>
+                <div className={s.select}>
                 <select onChange={ e=> handleFilterTypes(e)}>
                     <option value="All">All types</option>
                     {
@@ -101,14 +111,15 @@ export default function Home(){
                         })
                     }
                 </select>
-                
+                </div>
+                <div className={s.select}>
                 <select onChange={e => handleFilterCreated(e)}>
                     <option value="All">Todos</option>
                     <option value="created">Creados</option>
                     <option value="api">Existentes</option>
-                </select>
-                
-                {<Search/>}
+                </select> 
+                </div>
+              
                 
                 <Paginado
                       pokemonsPerPage= {pokemonsPerPage}

@@ -2,9 +2,9 @@ import './App.css';
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import LandingPage from './components/LandingPage/LandingPage'
 import Home from './components/Home';
-import PokemonCreate from './components/Pokemons/PokemonCreate'
+import PokemonCreate from './components/Pokemon/PokemonCreate'
 import PokemonDetail from './components/Details/PokemonDetail'
-import SearchBar from './components/Search/Search';
+
 function App() {
   return (
     <BrowserRouter>
@@ -14,7 +14,7 @@ function App() {
         <Route exact path= '/' component={LandingPage}/>
         <Route path = '/home' component={Home}/>
         <Route path= '/pokemon' component={PokemonCreate}/>
-        <Route path= '/home/:id' component={PokemonDetail}/>
+        <Route path= '/id/:id' component={PokemonDetail}/>
 
       
       </Switch>

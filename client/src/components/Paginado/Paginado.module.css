@@ -1,0 +1,33 @@
+
+.paginacion {
+	margin:20px 0;
+    
+}
+
+.paginacion ul {
+	list-style:none;
+	text-align: center;
+}
+
+.paginacion ul li {
+	display:inline-block;
+	margin-right:2px;
+}
+
+.paginacion ul li a {
+	display:block;
+	padding:10px 10px;
+	color:#fff;
+	background-image: linear-gradient(to bottom, rgb(32, 92, 82), #15c599) ;
+	text-decoration: none;
+    border-radius: 0px;
+}
+
+.paginacion ul li a:hover {
+	background:rgb(66, 197, 175)
+}
+
+.paginacion ul li .active {
+	background:lightskyblue;
+	font-weight:bold;
+}

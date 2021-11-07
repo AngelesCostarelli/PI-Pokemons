@@ -1,5 +1,6 @@
 .div{
-    background: url('https://www.molaunhuevo.com/wp-content/uploads/fondo-pokemon.jpg')no-repeat center center fixed;
+  background: url('https://lh3.googleusercontent.com/Hxrm0FEgRutcRL2mhNnpHdwDLPjlXnGMotdtlzRxwtLXK2hDbhgmA_gDFRkpeYJvrC5xrkB52NM4RQrloB-Ob7IgKTpFzciYkjwTnc36HEu_XSM=e365-w1920')no-repeat center center fixed;
+
     background-repeat: no-repeat;
     background-size: cover;
     width: 100vw;
@@ -30,18 +31,20 @@ text-shadow: 0 0 10px #FFFFFF;
 
 }
 .btn {
+  height: 70px;
+  
   -webkit-border-radius: 1;
   -moz-border-radius: 6;
-  border-radius: 6px;
+  border-radius: 135px;
   font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;;
   color: #ffffff;
   font-size: 20px;
-  background: #e7c862c9;
+  background: #54d4d8c9;
   padding: 10px 20px 10px 20px;
   text-decoration: none;
 }
 
 .btn:hover {
-  background: #fac364;
+  background: #47a9c7;
   text-decoration: none;
 }

@@ -23,7 +23,7 @@ router.get('/', async (req, res, next) =>{
     try{
         
         const type = await Type.findAll()
-        console.log(type)
+        
         res.send(type)
 
     }catch(err){

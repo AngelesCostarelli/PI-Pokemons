@@ -1,26 +1,33 @@
 import React from "react";
+import s from '../Paginado/Paginado.module.css'
 
 export default function Paginado({pokemonsPerPage, allPokemons, paginado}){
     const pageNumbers = []
-    console.log(allPokemons)
+    
 
-   for(let i = 0; i <= Math.ceil(allPokemons / pokemonsPerPage); i++) {
+   for(let i = 1; i <= Math.ceil(allPokemons / pokemonsPerPage); i++) {
         //math.ceil me va a redondear todos mis personajes sobre la cantidad de personajes que quiero por pagina 
-    pageNumbers.push(i+1) 
+    pageNumbers.push(i) 
     }
    
+   
     return(
-        <nav>
-            <ul className='paginado'>
+        
+            <section className={s.paginacion}>
+                <ul>
                 {
                     pageNumbers?.map(number => (
-                        <li href='number' key={number}>
-                        <a href='#' onClick={() => paginado(number)}>{number}</a>
+                        
+                        <li className='number' key={number}>
+                        <a  onClick={() => paginado(number)}>{number}</a>
                         </li>
+                        
+                        
                     ))
                 }
-            </ul>
-        </nav>
+                </ul>
+            </section>
+        
 
     )
 }

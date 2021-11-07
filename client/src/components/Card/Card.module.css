@@ -1,6 +1,7 @@
 .div{
     float: left;
     justify-content: center;
+    
 }
 
 .container{
@@ -12,6 +13,7 @@
     justify-content: center;
     margin: auto;
    
+   
 }
 .container .card{
     width:  330px;
@@ -20,8 +22,11 @@
     box-shadow: 0 2px 2px rgba(0,0,0,0.2);
     overflow: hidden;
     margin: 20px;
+    
     text-align: center;
     transition: all 0.25;
+    background-color: rgb(201, 243, 229);
+    border-spacing: 20px;
     
 }
 

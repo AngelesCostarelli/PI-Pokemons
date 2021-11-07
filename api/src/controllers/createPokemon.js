@@ -14,7 +14,7 @@ const createPokemon = async (name, height, weight, pkHp, pkAttack, pkDefense, pk
             pkAttack: pkAttack || '', 
             pkDefense: pkDefense || '', 
             pkSpeed: pkSpeed || '',
-            pkImg: pkImg || '',
+            pkImg: pkImg || 'https://images.gameinfo.io/pokemon/256/p448.png',
             
         },)
         let typeDb = await Type.findAll({

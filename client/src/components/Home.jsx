@@ -1,12 +1,14 @@
 import React, { Fragment } from "react";
 import { useState, useEffect } from "react";
+
 import {useDispatch, useSelector} from "react-redux";
 import { filterPokemonByTypes, getPokemons, filterCreated, orderByName, orderByAttack, getTypes } from "../actions";
 import {Link} from "react-router-dom"
 import {store} from "../store/index"
-import Card from "../components/Card/Card"
+import Card from "./Card/Card"
 import Paginado from "./Paginado/Paginado";
 import Search from "./Search/Search";
+import s from "../components/Home/Home.module.css"
 
 export default function Home(){
 // --------------traigo types del estado para option--------
@@ -16,8 +18,9 @@ export default function Home(){
     }, [])
 
     const dispatch = useDispatch()
+    
     const allPokemons = useSelector((state) => state.pokemons)
-    const pokemonsByName = useSelector((state) => state.pokemons)
+   
    
     const [order, setOrder] = useState('')
     const [currentPage, setCurrentPage] = useState(1) //estados locales, uno con la pagina actual y otro que me setee la pagina actual, lo seteo en 1 porque siempre voy a arrancar en la primer pagina 
@@ -28,8 +31,6 @@ export default function Home(){
     const paginado = (pageNumber) =>{
         setCurrentPage(pageNumber)
     }
-
-    console.log(currentPokemons)
 
 
 
@@ -43,6 +44,8 @@ export default function Home(){
     function handleClick(e){
         e.preventDefault();
         dispatch(getPokemons());
+        
+        
     }
 
     function handleFilterTypes(e){
@@ -68,18 +71,21 @@ export default function Home(){
    
 
     return (
-        <div>
-            <Link to= '/pokemon'>Crear pk</Link>
-            <h1>APP DE POKEMONS BY ANGIE</h1>
-            <button onClick={e => {handleClick(e)}}>
-                Volver a cargar los pokemones
-            </button>
+        <div className={s.container}>
+            <Link to= '/pokemon'>CREATE POKEMON</Link>
+            <h1>POKEMONS APP</h1>
+
+            <Link to= "/home"><button className={s.btn} onClick={e => {handleClick(e)}}>
+                LOAD ALL POKEMONS
+            </button></Link>
             <div>
+                
                 <select onChange={e => handleSort(e)}>
                     <option value="asc">A-Z</option>
                     <option value="desc">Z-A</option>
                     
                 </select>
+                
                 <select onChange={e => handleSortAttack(e)}>
                     <option value="a">Mas fuerza</option>
                     <option value="d">Menos fuerza</option>
@@ -101,7 +107,9 @@ export default function Home(){
                     <option value="created">Creados</option>
                     <option value="api">Existentes</option>
                 </select>
+                
                 {<Search/>}
+                
                 <Paginado
                       pokemonsPerPage= {pokemonsPerPage}
                        allPokemons={allPokemons.length}
@@ -109,23 +117,31 @@ export default function Home(){
                                 />
                 
                 {
-                    currentPokemons && currentPokemons.map((el) =>{
+                    currentPokemons &&
+                     currentPokemons.map((el) =>{
                         return(
+                            <>
                             <div key={el.id}>
                                 <Link to={"/home/" + el.id}>
-                                    <Card name={el.name} image={el.pkImg ? el.pkImg : el.sprites.other.home.front_default} type={el.type}  />
+                                    <Card id={el.id} name={el.name} image={el.pkImg ? el.pkImg : el.sprites?.other?.home.front_default} type={el.type}  />
                                 </Link>
                             </div>
+
+                           </>
                     );
-                })
+                    
+                  }) 
+                 
 
                
                     
                 }
+             
 
                 
 
             </div>
+           
         </div>
     )
 }

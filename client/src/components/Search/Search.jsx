@@ -1,30 +1,49 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch, useSelector} from "react-redux";
-import { getNamePokemons } from "../../actions";
+import { getNamePokemons, getPokemons } from "../../actions";
+import { useHistory } from 'react-router-dom';
 import s from '../Search/Search.module.css'
 export default function SearchBar(){
-    
+    const pokemon = useSelector(state => state.pokemons)
     const dispatch = useDispatch()
     const [search, setSearch] = useState("")
+    const { push } = useHistory()
 
     function handleInputChange(e){
         e.preventDefault()
         setSearch(e.target.value)
-        console.log(e.target.value)
+        // console.log(e.target.value)
         
     }
     function handleSubmit(e){
         e.preventDefault()
-        dispatch(getNamePokemons(search))
+       let name = pokemon.map(e => e.name)
+        // console.log(search)
+        for(var i = 0; i < name.length; i++){
+            // console.log(name[i])
+            if(name[i] === search){
+               
+                dispatch(getNamePokemons(search))
+
+            }else{
+                // push( `/home/error`)
+              
+                push(`/home`)
+                setSearch('')
+                return alert('Pokemon does not exist')
+                
+
+            }
+        }
+        
+     
         
     }
 
     return(
         <div className={s.box}>
-            {/* <input type="text" placeholder="Search.."
-            onChange={handleInputChange} />
-            <button className={s.btn} type='submit' onClick={handleSubmit}>Search</button> */}
+     
           
             <form onSubmit={handleSubmit}>
                 

@@ -43,6 +43,7 @@ export default function Home(){
     }, [])
 
     function handleClick(e){
+        // console.log('entre')
         e.preventDefault();
         dispatch(getPokemons());
         
@@ -79,9 +80,9 @@ export default function Home(){
             <Link to= '/pokemon'><button className={s.create}>CREATE POKEMON</button></Link>
             {<Search/>}
 
-            <Link to= "/home"><button className={s.btn} onClick={e => {handleClick(e)}}>
+           <button className={s.btn} onClick={e => {handleClick(e)}}>
                  All Pokemons
-            </button></Link>
+            </button>
            
             <div>
                  <div className={s.select}>
@@ -95,15 +96,18 @@ export default function Home(){
                 
                 <div className={s.select}>
                 <select onChange={e => handleSortAttack(e)}>
-                    <option value="a">Mas fuerza</option>
-                    <option value="d">Menos fuerza</option>
+                <option selected disabled>Attack</option>
+                    <option value="a">Most</option>
+                    <option value="d">Less</option>
                     
                 </select>
                 </div>
                 <div className={s.select}>
                 <select onChange={ e=> handleFilterTypes(e)}>
+                <option selected disabled>Types</option>
                     <option value="All">All types</option>
                     {
+                        
                         typesPk?.map(el => {
                             return(
                                 <option value={el.name}>{el.name}</option>
@@ -114,9 +118,10 @@ export default function Home(){
                 </div>
                 <div className={s.select}>
                 <select onChange={e => handleFilterCreated(e)}>
-                    <option value="All">Todos</option>
-                    <option value="created">Creados</option>
-                    <option value="api">Existentes</option>
+                <option selected disabled>Filter by</option>
+                    <option value="All">All Pokemon</option>
+                    <option value="created">Created</option>
+                    <option value="api">Existing</option>
                 </select> 
                 </div>
               
@@ -128,21 +133,27 @@ export default function Home(){
                                 />
                 
                 {
+                  
                     currentPokemons &&
                      currentPokemons.map((el) =>{
                         return(
+                            
+                            
                             <>
+                          
                             <div key={el.id}>
                                 <Link to={"/home/" + el.id}>
                                     <Card id={el.id} name={el.name} image={el.pkImg ? el.pkImg : el.sprites?.other?.home.front_default} type={el.type}  />
                                 </Link>
                             </div>
-
+                           
+                          
                            </>
                     );
                     
                   }) 
-                 
+                  
+                
 
                
                     

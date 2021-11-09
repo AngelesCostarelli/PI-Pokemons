@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getTypes, postPokemons } from '../../actions';
+import { getPokemons, getTypes, postPokemons } from '../../actions';
 import s from '../Pokemon/PokemonCreate.module.css'
 
 export function validate(input){
@@ -19,7 +19,7 @@ export function validate(input){
         errors.pkHp = 'Attack must be a number between 0 and 100'
     }else if(input.pkSpeed < 0 || input.pkSpeed > 150){
         errors.pkSpeed = 'Attack must be a number between 0 and 150'
-    }else if( input.type.length <=0){
+    }else if( input.type.length <= 0){
         errors.type = 'You must select at least 1 type and no more than 2'
     }else if(input.type.length > 2 ){
         errors.type = "Limit of types exceeded. Please reset and select 1 or 2 types"
@@ -95,6 +95,7 @@ export default function PokemonCreate(){
             type:[]
 
         })
+        dispatch(getPokemons())
         history.push('/home') // me redirige al home cuando termino de crear el personaje 
     }
 
@@ -116,14 +117,14 @@ export default function PokemonCreate(){
     return(
         <div className={s.general}>
 
-            <Link to= "/home"><button>Volver</button></Link>
-           
-            <div className={s.regform}><h1>Let's make your own pokemon</h1></div>
-            <div className={s.mane}>
-            <form onSubmit={(e)=> handleSubmit(e)}>
-                <div id={s.name}>
-                    <label className={s.namelabel}>Name:</label>
-                    <input className={s.nameinput}
+            <Link to= "/home"><button className={s.back}>Go Back</button></Link>
+            <div className={s.wrapper}>
+            <div className={s.title}><h1>Make your own pokemon</h1></div>
+            
+            <form className={s.form} onSubmit={(e)=> handleSubmit(e)}>
+                <div className={s.input_field}>
+                    <label className={s.name}>Name:</label>
+                    <input 
                     type="text" 
                     value= {input.name} 
                     required
@@ -135,9 +136,10 @@ export default function PokemonCreate(){
                         )
                     }
                 </div>
-                <div>
-                    <label >Height:</label>
-                    <input type="number"
+                <div className={s.input_field}>
+                    <label className={s.name}>Height:</label>
+                    <input 
+                    type="number"
                     value={input.height}
                     required
                     name = "height" 
@@ -148,9 +150,10 @@ export default function PokemonCreate(){
                         )
                     }
                 </div>
-                <div>
-                    <label >Weight:</label>
-                    <input type="number"
+                <div className={s.input_field}>
+                    <label className={s.name}>Weight:</label>
+                    <input 
+                    type="number"
                     value={input.weight}
                     required
                     name = "weight" 
@@ -158,8 +161,8 @@ export default function PokemonCreate(){
                     />
                 </div>
             
-                <div>
-                    <label >Hp:</label>
+                <div className={s.input_field}>
+                    <label className={s.name}>Hp:</label>
                     <input type="number"
                     value={input.pkHp}
                     required
@@ -171,8 +174,8 @@ export default function PokemonCreate(){
                         )
                     }
                 </div>
-                <div>
-                    <label >Attack:</label>
+                <div className={s.input_field}>
+                    <label className={s.name} >Attack:</label>
                     <input type="number"
                     value={input.pkAttack}
                     required
@@ -184,8 +187,8 @@ export default function PokemonCreate(){
                         )
                     }
                 </div>
-                <div>
-                    <label >Defense:</label>
+                <div className={s.input_field}>
+                    <label className={s.name} >Defense:</label>
                     <input type="number"
                     value={input.pkDefense}
                     required
@@ -197,8 +200,8 @@ export default function PokemonCreate(){
                         )
                     }
                 </div>
-                <div>
-                    <label >Speed:</label>
+                <div className={s.input_field}>
+                    <label className={s.name} >Speed:</label>
                     <input type="number"
                     value={input.pkSpeed}
                     required
@@ -210,16 +213,18 @@ export default function PokemonCreate(){
                         )
                     }
                 </div>
-                <div>
-                    <label >Image:</label>
+                <div className={s.input_field}>
+                    <label className={s.name} >Image:</label>
                     <input type="text"
                     value={input.pkImg}
                     name = "pkImg" 
                     onChange={(e)=>handleChange(e)}/>
                 </div>
-                <div>
-                    Type:
+                <div className={s.input_field}>
+                    <label className={s.name}>Type:</label>
+                    <div className={s.select}>
                 <select onChange={(e) => handleSelect(e)}>
+                    <option disabled="disable" selected="selected">--Choose 1 or 2</option>
                     {types.map((t)=> (
                        
                         <option value={t.name} 
@@ -234,16 +239,16 @@ export default function PokemonCreate(){
                         
                     ))}
                 </select>
-                
+                </div>
                 {
                         errors.type &&(
                             <p>{errors.type}</p>
                         )
                     }
                     </div>
-                     <button disabled={!activado} type='submit'>Create Pokemon!</button>
           
                 
+                    <button className={s.create} disabled={!activado} type='submit'>Create Pokemon!</button>
 
 
             </form>
@@ -256,7 +261,7 @@ export default function PokemonCreate(){
                 
                 
                 )}
-               <button onClick={(e)=>handleDelete(e)}>Reset Types</button>
+               <button disabled={activado} onClick={(e)=>handleDelete(e)}>Reset Types</button>
 
         </div>
         </div>

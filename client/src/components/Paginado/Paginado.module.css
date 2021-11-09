@@ -1,6 +1,7 @@
 
 .paginacion {
-	margin:20px 0;
+	margin:20px 0 ;
+	
     
 }
 
@@ -12,6 +13,7 @@
 .paginacion ul li {
 	display:inline-block;
 	margin-right:2px;
+	margin-bottom: 15px;
 }
 
 .paginacion ul li a {
@@ -25,7 +27,7 @@
 }
 
 .paginacion ul li a:hover {
-	background:rgb(66, 197, 175)
+	background:rgb(250, 247, 101)
 }
 
 .paginacion ul li .active {

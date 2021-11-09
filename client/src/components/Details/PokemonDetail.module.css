@@ -56,11 +56,12 @@
     margin-top: 17px;
     display: flex;
     justify-content: center;
+  
     
 }
 .btn button{
     height: 50px;
-    width: 60px;
+    width: 100px;
     border-radius: 60px;
     font-family: sans-serif;
     text-transform: uppercase;
@@ -72,6 +73,15 @@
     cursor: pointer;
 
     text-decoration: none;
+}
+
+.loading{
+    margin-top: 200px;
+    font-family: sans-serif;
+    letter-spacing: .1em;
+    font-size: 25px;
+    color: rgb(45, 161, 89);
+ 
 }
 
 

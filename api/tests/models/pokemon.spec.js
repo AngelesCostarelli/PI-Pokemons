@@ -25,7 +25,7 @@ describe('Validar tipos de pokemones', () => {
   beforeEach(() => Type.sync({ force: true }));
   describe('name', () => {
     it('should throw an error if name is null', (done) => {
-      Pokemon.create({})
+      Type.create({})
         .then(() => done(new Error('It requires a valid name')))
         .catch(() => done());
     });

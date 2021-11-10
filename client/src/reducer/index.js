@@ -5,7 +5,7 @@ const inicialState = {
     pokemons: [],
     allPokemons: [],
     types: [],
-    detail: [],
+    // detail: [],
 
 }
 
@@ -41,7 +41,7 @@ function reducer(state = inicialState, action){
             const allPokemons = state.allPokemons
             const typesFiltered = action.payload === 'All' ? allPokemons : allPokemons.filter(el => el.type[0] === action.payload || el.type[1] === action.payload) 
             // si mi payload es todo , me devolves todo. Sino entra a allpokemons y filtramelo por le payload que te llega, por payload le pasamos cada una de los status que tengo el back entonces al value de la etiqueta option le pongo lo que tengo en el back pq es lo que me llegara por payload y va a tener que coincidir en el filtro 
-            // console.log(typesFiltered)
+           
             return{
                 ...state,
                 pokemons: typesFiltered

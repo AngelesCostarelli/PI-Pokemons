@@ -19,7 +19,7 @@ export default function Card({id, name, image, type}){
             </h5>
             <div className={s.types}>
                 {type.map((e)=> 
-                <div>{e}</div>
+                <div key={e}>{e}</div>
                 
                 )}
             </div>

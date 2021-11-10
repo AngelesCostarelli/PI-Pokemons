@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch, useSelector} from "react-redux";
-import { getNamePokemons, getPokemons } from "../../actions";
+import { getNamePokemons} from "../../actions";
 import { useHistory } from 'react-router-dom';
 import s from '../Search/Search.module.css'
 export default function SearchBar(){
@@ -18,25 +18,39 @@ export default function SearchBar(){
     }
     function handleSubmit(e){
         e.preventDefault()
+        
        let name = pokemon.map(e => e.name)
-        // console.log(search)
-        for(var i = 0; i < name.length; i++){
-            // console.log(name[i])
-            if(name[i] === search){
-               
-                dispatch(getNamePokemons(search))
+        
+        let found = name.includes(search.toLowerCase())
+        if(found){
+            dispatch(getNamePokemons(search))
 
-            }else{
-                // push( `/home/error`)
+        }else{
+            push(`/home`)
+            setSearch('')
+            return alert('Pokemon does not exist')
+
+        }
+
+
+
+
+        // for(var i = 0; i < name.length; i++){
+        //     // console.log(name[i])
+        //     if(name[i] === search){
+               
+        //         dispatch(getNamePokemons(search))
+
+        //     }else{
+        //         // push( `/home/error`)
               
-                push(`/home`)
-                setSearch('')
-                return alert('Pokemon does not exist')
+        //         push(`/home`)
+        //         setSearch('')
+        //         return alert('Pokemon does not exist')
                 
 
-            }
-        }
-        
+        //     }
+        // }
      
         
     }

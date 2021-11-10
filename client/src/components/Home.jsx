@@ -38,9 +38,9 @@ export default function Home(){
     
 
     // quiero traer del state los pkemon cuando el componente se monta
-    useEffect(()=>{
-        dispatch(getPokemons()) // es lo mismo que hacer el mapdispatchToProps
-    }, [])
+    // useEffect(()=>{
+    //     dispatch(getPokemons()) // es lo mismo que hacer el mapdispatchToProps
+    // }, [])
 
     function handleClick(e){
         // console.log('entre')
@@ -51,7 +51,9 @@ export default function Home(){
     }
 
     function handleFilterTypes(e){
+        
         dispatch(filterPokemonByTypes(e.target.value))
+
     }
     function handleFilterCreated(e){
         dispatch(filterCreated(e.target.value))
@@ -61,8 +63,9 @@ export default function Home(){
         dispatch(orderByName(e.target.value))
         setCurrentPage(1)
         setOrder(`Ordenado ${e.target.value}`)
-
+      
     }
+
     function handleSortAttack(e){
         e.preventDefault();
         dispatch(orderByAttack(e.target.value))
@@ -86,8 +89,8 @@ export default function Home(){
            
             <div>
                  <div className={s.select}>
-                 <select onChange={e => handleSort(e)}>
-                     <option selected disabled>Order</option>
+                 <select defaultValue='' onChange={e => handleSort(e)}>
+                     <option  value='' disabled >Order</option>
                     <option value="asc">A-Z</option>
                     <option value="desc">Z-A</option>
                     
@@ -95,30 +98,30 @@ export default function Home(){
                 </div>
                 
                 <div className={s.select}>
-                <select onChange={e => handleSortAttack(e)}>
-                <option selected disabled>Attack</option>
-                    <option value="a">Most</option>
-                    <option value="d">Less</option>
+                <select defaultValue=''  onChange={e => handleSortAttack(e)}>
+                <option value='' disabled >Attack</option>
+                    <option value="a">Least</option>
+                    <option value="d">Most</option>
                     
                 </select>
                 </div>
                 <div className={s.select}>
-                <select onChange={ e=> handleFilterTypes(e)}>
-                <option selected disabled>Types</option>
+                <select defaultValue=''  onChange={ e=> handleFilterTypes(e)}>
+                <option value='' disabled >Types</option>
                     <option value="All">All types</option>
                     {
-                        
+                      
                         typesPk?.map(el => {
                             return(
-                                <option value={el.name}>{el.name}</option>
+                                <option key={el.id} value={el.name}>{el.name}</option>
                             )
-                        })
+                        }) 
                     }
                 </select>
                 </div>
                 <div className={s.select}>
-                <select onChange={e => handleFilterCreated(e)}>
-                <option selected disabled>Filter by</option>
+                <select defaultValue=''  onChange={e => handleFilterCreated(e)}>
+                <option value='' disabled>Filter by</option>
                     <option value="All">All Pokemon</option>
                     <option value="created">Created</option>
                     <option value="api">Existing</option>
@@ -134,24 +137,25 @@ export default function Home(){
                 
                 {
                   
-                    currentPokemons &&
+                    currentPokemons.length > 0 ?
                      currentPokemons.map((el) =>{
                         return(
                             
                             
-                            <>
+                         
                           
                             <div key={el.id}>
-                                <Link to={"/home/" + el.id}>
-                                    <Card id={el.id} name={el.name} image={el.pkImg ? el.pkImg : el.sprites?.other?.home.front_default} type={el.type}  />
-                                </Link>
+                                    <Card  id={el.id} name={el.name} image={el.pkImg ? el.pkImg : el.sprites?.other?.home.front_default} type={el.type}  />
+                                
                             </div>
                            
                           
-                           </>
+                           
                     );
                     
-                  }) 
+                  }) :
+                  <div> Didn't find any pokemon</div>
+
                   
                 
 

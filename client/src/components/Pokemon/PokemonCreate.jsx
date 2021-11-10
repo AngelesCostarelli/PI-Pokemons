@@ -11,6 +11,9 @@ export function validate(input){
 
     }else if(input.height < 0 || input.height> 20){
         errors.height = 'Height must be a number between 0 and 20'
+    }else if(input.weight < 0 || input.weight > 500){
+        errors.weight = 'Weight must be a number between 0 and 500'
+
     }else if(input.pkDefense < 0 || input.pkDefense >100){
         errors.pkDefense = 'Defense must be a number between 0 and 100'
     }else if(input.pkAttack < 0 || input.pkAttack > 120){
@@ -159,6 +162,11 @@ export default function PokemonCreate(){
                     name = "weight" 
                     onChange={(e)=>handleChange(e)}
                     />
+                     {
+                        errors.weight &&(
+                            <p>{errors.weight}</p>
+                        )
+                    }
                 </div>
             
                 <div className={s.input_field}>
@@ -223,11 +231,11 @@ export default function PokemonCreate(){
                 <div className={s.input_field}>
                     <label className={s.name}>Type:</label>
                     <div className={s.select}>
-                <select onChange={(e) => handleSelect(e)}>
-                    <option disabled="disable" selected="selected">--Choose 1 or 2</option>
+                <select defaultValue="" onChange={(e) => handleSelect(e)}>
+                    <option disabled="disable" >--Choose 1 or 2</option>
                     {types.map((t)=> (
                        
-                        <option value={t.name} 
+                        <option key={t.id} value={t.name} 
                         >{t.name}
                         
                     

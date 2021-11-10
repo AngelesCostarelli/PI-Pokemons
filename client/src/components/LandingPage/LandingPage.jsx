@@ -9,7 +9,7 @@ function LandingPage(){
             <h3>Welcome to the Pokemon Api</h3>
             </div>
             <Link to = '/home'>
-                <button className={s.btn}>Go</button>
+                <button className={s.btn}>Go!</button>
             </Link>
         
         </div>

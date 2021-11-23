@@ -9,6 +9,7 @@ export const ORDER_BY_ATTACK = 'ORDER_BY_ATTACK'
 export const GET_NAME_POKEMONS = 'GET_NAME_POKEMONS'
 export const GET_TYPES = 'GET_TYPES'
 export const GET_DETAILS = 'GET_DETAILS'
+export const ORDER_BY_DEFENSE = 'ORDER_BY_DEFENSE'
 
 // version async await
 export function getPokemons(){
@@ -89,6 +90,13 @@ export function orderByName(payload){
 export function orderByAttack(payload){
     return{
         type: ORDER_BY_ATTACK,
+        payload
+    }
+}
+
+export function orderByDefense(payload){
+    return{
+        type: ORDER_BY_DEFENSE,
         payload
     }
 }

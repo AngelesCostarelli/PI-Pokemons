@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { useState, useEffect } from "react";
 
 import {useDispatch, useSelector} from "react-redux";
-import { filterPokemonByTypes, getPokemons, filterCreated, orderByName, orderByAttack, getTypes } from "../actions";
+import { filterPokemonByTypes, getPokemons, filterCreated, orderByName, orderByAttack, getTypes, orderByDefense } from "../actions";
 import {Link} from "react-router-dom"
 import {store} from "../store/index"
 import Card from "./Card/Card"
@@ -73,6 +73,12 @@ export default function Home(){
         setOrder(`Ordenado ${e.target.value}`)
 
     }
+    function handleSortDefense(e){
+        e.preventDefault();
+        dispatch(orderByDefense(e.target.value))
+        setCurrentPage(1)
+        setOrder(`Ordenado ${e.target.value}`)
+    }
    
 
     return (
@@ -100,6 +106,14 @@ export default function Home(){
                 <div className={s.select}>
                 <select defaultValue=''  onChange={e => handleSortAttack(e)}>
                 <option value='' disabled >Attack</option>
+                    <option value="a">Least</option>
+                    <option value="d">Most</option>
+                    
+                </select>
+                </div>
+                <div className={s.select}>
+                <select defaultValue=''  onChange={e =>handleSortDefense(e) }>
+                <option value='' disabled >Defense</option>
                     <option value="a">Least</option>
                     <option value="d">Most</option>
                     

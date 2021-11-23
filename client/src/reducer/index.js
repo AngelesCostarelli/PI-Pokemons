@@ -1,4 +1,4 @@
-import { GET_POKEMONS, FILTER_BY_TYPES, FILTER_CREATED, ORDER_BY_NAME, ORDER_BY_ATTACK, GET_NAME_POKEMONS, GET_TYPES, GET_DETAILS } from "../actions";
+import { GET_POKEMONS, FILTER_BY_TYPES, FILTER_CREATED, ORDER_BY_NAME, ORDER_BY_ATTACK, GET_NAME_POKEMONS, GET_TYPES, GET_DETAILS, ORDER_BY_DEFENSE } from "../actions";
 
 
 const inicialState = {
@@ -94,6 +94,23 @@ function reducer(state = inicialState, action){
                 ...state,
                 pokemons: sortedArrAttack
             }
+            case ORDER_BY_DEFENSE:
+                let sortedArrDefesne = action.payload === 'a' ?
+            state.pokemons.sort((a,b) =>{
+                if(a.pkDefense > b.pkDefense) return 1
+                if(a.pkDefense < b.pkDefense) return -1
+                return 0
+            }) :
+            state.pokemons.sort((a, b) =>{
+                if(a.pkDefense > b.pkDefense) return -1
+                if(a.pkDefense < b.pkDefense) return 1
+                return 0
+            })
+            return{
+                ...state,
+                pokemons: sortedArrDefesne
+            }
+
             case 'POKEMON_NAME':
                 return{
                     ...state,

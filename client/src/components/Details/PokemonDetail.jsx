@@ -46,7 +46,8 @@ export default function PokemonDetail(){
                      <h5>Attack: {myPokemon.pkAttack}</h5>
                      <h5>Defense: {myPokemon.pkDefense}</h5>
                      <h5>Speed: {myPokemon.pkSpeed}</h5>
-                     <h5>Type:{myPokemon.type[0] + ' ' + myPokemon.type[1]} </h5>
+                     {/* <h5>Type: {myPokemon.type[0] + ' ' + myPokemon.type[1]} </h5> */}
+                     <h5>Type: {myPokemon.type.length < 2 ? myPokemon.type[0] : myPokemon.type[0] + ' ' + myPokemon.type[1]}</h5>
                      
                      
                      </div>

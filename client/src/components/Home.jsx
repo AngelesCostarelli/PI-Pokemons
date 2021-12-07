@@ -73,12 +73,7 @@ export default function Home(){
         setOrder(`Ordenado ${e.target.value}`)
 
     }
-    function handleSortDefense(e){
-        e.preventDefault();
-        dispatch(orderByDefense(e.target.value))
-        setCurrentPage(1)
-        setOrder(`Ordenado ${e.target.value}`)
-    }
+    
    
 
     return (
@@ -111,14 +106,7 @@ export default function Home(){
                     
                 </select>
                 </div>
-                <div className={s.select}>
-                <select defaultValue=''  onChange={e =>handleSortDefense(e) }>
-                <option value='' disabled >Defense</option>
-                    <option value="a">Least</option>
-                    <option value="d">Most</option>
-                    
-                </select>
-                </div>
+                
                 <div className={s.select}>
                 <select defaultValue=''  onChange={ e=> handleFilterTypes(e)}>
                 <option value='' disabled >Types</option>

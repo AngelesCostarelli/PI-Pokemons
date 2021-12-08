@@ -78,17 +78,26 @@ export default function Home(){
 
     return (
         <div className={s.container}>
-            <div>
-            <img src="https://d1x7zurbps6occ.cloudfront.net/logo/small/logo-brand-pokemon.png" alt="" />
+            <div className={s.logo}>
+            <img src="https://lh3.googleusercontent.com/3TSaKxXGo2wT0lu0AyNUBnkk6wkCC2AzOhJyy3JXIPm-AmZ1k9DSAroWeBUyePswCZSs5lVp3mPF7HzUpY9VPlyOV5eddITONINr3WSqLNLm=e365-w600" alt="" width="200px"/>
             </div>
+            
+            <div className={s.createPokemon}>
             <Link to= '/pokemon'><button className={s.create}>CREATE POKEMON</button></Link>
+            </div>
+            <div className={s.search}>
             {<Search/>}
+            </div>
 
+            <div className={s.allpokemon}>
            <button className={s.btn} onClick={e => {handleClick(e)}}>
                  All Pokemons
             </button>
-           
+            </div>
+          
             <div>
+                <div className={s.filtros}>
+                    <div className={s.order}>
                  <div className={s.select}>
                  <select defaultValue='' onChange={e => handleSort(e)}>
                      <option  value='' disabled >Order</option>
@@ -97,7 +106,9 @@ export default function Home(){
                     
                 </select>
                 </div>
+                </div>
                 
+                <div className={s.attack}>
                 <div className={s.select}>
                 <select defaultValue=''  onChange={e => handleSortAttack(e)}>
                 <option value='' disabled >Attack</option>
@@ -106,7 +117,9 @@ export default function Home(){
                     
                 </select>
                 </div>
+                </div>
                 
+                <div className={s.types}>
                 <div className={s.select}>
                 <select defaultValue=''  onChange={ e=> handleFilterTypes(e)}>
                 <option value='' disabled >Types</option>
@@ -121,6 +134,9 @@ export default function Home(){
                     }
                 </select>
                 </div>
+                </div>
+                
+                <div className={s.filterby}>
                 <div className={s.select}>
                 <select defaultValue=''  onChange={e => handleFilterCreated(e)}>
                 <option value='' disabled>Filter by</option>
@@ -129,13 +145,16 @@ export default function Home(){
                     <option value="api">Existing</option>
                 </select> 
                 </div>
-              
+                </div>
+                </div>
                 
+                <div className={s.paginado}>
                 <Paginado
                       pokemonsPerPage= {pokemonsPerPage}
                        allPokemons={allPokemons.length}
                        paginado = {paginado}
                                 />
+                                </div>
                 
                 {
                   
@@ -146,7 +165,7 @@ export default function Home(){
                             
                          
                           
-                            <div key={el.id}>
+                            <div className={s.cards} key={el.id}>
                                     <Card  id={el.id} name={el.name} image={el.pkImg ? el.pkImg : el.sprites?.other?.home.front_default} type={el.type}  />
                                 
                             </div>
